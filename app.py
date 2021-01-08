@@ -8,7 +8,7 @@ def helper(*args):
 
 
 @app.route("/")
-def index():
+def index1():
     # return '<h1>Hello!</h1>'
     some_var = "Testing test"
     some_l = [1, 2, 3, 4, 5]
@@ -39,7 +39,7 @@ def info():
 
 @app.route("/user/<name>")
 def user(name):
-    return f"some user '{name}' page"
+    return render_template("user.html", name=name)
 
 
 if __name__ == "__main__":

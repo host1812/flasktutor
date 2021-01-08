@@ -1,30 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% block content %}
 
-<body>
-    <h1>Index Page</h1>
-    <h2>{{temp_var}}</h2>
-    <h2>{{some_l[::2]}}</h2>
-    <h2>{{some_d.get('name')}}</h2>
-    <!-- <img src='../static/images/index.jpg' alt=''> -->
-    <ul>
-        {% for item in some_l %}
-        <li>{{item}}</li>
-        {% endfor %}
-    </ul>
-    <p>
-        {% if 2 in some_l %}
-        We got it!!!
-        {% else %}
-        Not here...
-        {% endif %}
-    </p>
-</body>
+<h1>Index Page</h1>
+<h2>{{temp_var}}</h2>
+<h2>{{some_l[::2]}}</h2>
+<h2>{{some_d.get('name')}}</h2>
+<!-- <img src='../static/images/index.jpg' alt=''> -->
+<ul>
+    {% for item in some_l %}
+    <li>{{item}}</li>
+    {% endfor %}
+</ul>
+<p>
+    {% if 2 in some_l %}
+    We got it!!!
+    {% else %}
+    Not here...
+    {% endif %}
+</p>
 
-</html>
+<a href="{{ url_for('static',filename='images/index.jpg') }}" target="_blank" rel="noopener noreferrer">Here</a>
+<img src="{{ url_for('static',filename='images/index.jpg') }}" alt="">
+
+{% endblock content %}
