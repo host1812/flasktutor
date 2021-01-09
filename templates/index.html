@@ -2,25 +2,10 @@
 
 {% block content %}
 
-<h1>Index Page</h1>
-<h2>{{temp_var}}</h2>
-<h2>{{some_l[::2]}}</h2>
-<h2>{{some_d.get('name')}}</h2>
-<!-- <img src='../static/images/index.jpg' alt=''> -->
-<ul>
-    {% for item in some_l %}
-    <li>{{item}}</li>
-    {% endfor %}
-</ul>
-<p>
-    {% if 2 in some_l %}
-    We got it!!!
-    {% else %}
-    Not here...
-    {% endif %}
-</p>
-
-<a href="{{ url_for('static',filename='images/index.jpg') }}" target="_blank" rel="noopener noreferrer">Here</a>
-<img src="{{ url_for('static',filename='images/index.jpg') }}" alt="">
+<div class="bg-light">
+    <p>Welcome to Puppy Management System!</p>
+    <p>Wanna sign up?</p>
+    <a href="{{ url_for('signup_form') }}">Sign Up here!</a>
+</div>
 
 {% endblock content %}

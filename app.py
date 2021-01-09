@@ -1,45 +1,28 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 
-def helper(*args):
-    pass
-
-
 @app.route("/")
-def index1():
-    # return '<h1>Hello!</h1>'
-    some_var = "Testing test"
-    some_l = [1, 2, 3, 4, 5]
-    some_d = {"name": "Alex", "age": 12}
-    helper(
-        "ewrewr",
-        "erqerqer",
-        "adfadfadf",
-        "adfasdfasd",
-        "dfadfasdfadf",
-        "dafdadfdasdfasdfa",
-        "adfadsfadfasdfasdf",
-        "dafadfads",
-    )
-    return render_template(
-        "index.html",
-        temp_var=some_var,
-        some_l=some_l,
-        some_d=some_d,
-        other_log_var_name_is_something_that=some_d,
-    )
+def index():
+    return render_template("index.html")
 
 
-@app.route("/info")
-def info():
-    return "some info page"
+@app.route("/signup_form")
+def signup_form():
+    return render_template("signup.html")
 
 
-@app.route("/user/<name>")
-def user(name):
-    return render_template("user.html", name=name)
+@app.route("/thank_you")
+def thank_you():
+    first = request.args.get("first")
+    last = request.args.get("last")
+    return render_template("thankyou.html", first=first, last=last)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
 
 
 if __name__ == "__main__":
