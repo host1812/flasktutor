@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="bg-light">
+    <p>Your value: {{ username }}</p>
+    {% if not report.get("isupper") or not report.get("islower") or not report.get("endswithnum") %}
+    <ul>
+        {% if not report.get("isupper") %}
+        <li>
+            No UPPER :(
+        </li>
+        {% endif %}
+        {% if not report.get("islower") %}
+        <li>
+            No lower :(
+        </li>
+        {% endif %}
+        {% if not report.get("endswithnum") %}
+        <li>
+            ends not with number :(
+        </li>
+        {% endif %}
+    </ul>
+    {% else %}
+    <p>Congratulations!!! You passed the test!!!</p>
+    {% endif %}
+
+
+
+</div>
+
+{% endblock content %}
